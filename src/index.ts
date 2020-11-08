@@ -1,19 +1,33 @@
-// 1. 联合类型
-// 默认你可以认为是 并集
-let str: string | number; // 当没有初始化的时候, 只能调用两者中的共同方法
+// 声明函数的两种方式
+// 1. 函数声明 function
+// 2. 函数表达式方式 声明函数 const fn =
 
-let ele: HTMLElement | null = document.getElementById('#app');
-ele!.style.color = 'red'; // !非空断言
+// 声明不赋值 就是 any 类型
+// 函数声明的方式 声明函数 和 标识.
+function sum(a: string, b: string): string {
+    return a + b;
+}
 
-// 可以做断言操作, 也能解决这个问题.
-(ele as HTMLElement).style.color = 'red'; // as 类型断言 强制转换
+// 函数表达式方式声明函数 和 标识
+// 2) 如果使用的是表达式, 你给他定义了类型, 你可以把一个可以兼容的函数赋值给他
+type Sum = (a: string, b: string) => string
+let sum2: Sum = (a: string, b: string): string => {
+    return a + b
+};
 
-// 双重断言 (这种方式不建议使用,会破坏原有类型).
-(ele as any) as boolean;
+// 可选参数 ? 默认值 =
+// b? 表示 b 可以不传值,是个可选参数
+let sum3 = (a: string, b?: string) => {
 
-// 字面量类型
-type Direction = 'up' | 'down' | 'left' | 'right'
-let direction: Direction;
-direction = 'up'
+};
+let sum4 = (a: string, b: string = 'Gene') => {
+
+};
+
+// 剩余参数
+let sum5 = (...args: number[]) => {
+};
+sum5(1, 2, 3, 4)
+
 
 export {}
