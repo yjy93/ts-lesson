@@ -1,33 +1,54 @@
-// 声明函数的两种方式
-// 1. 函数声明 function
-// 2. 函数表达式方式 声明函数 const fn =
+/**
+ * @author: Gene
+ * @age: 永远18岁的美少年
+ * @Email： Genejob@163.com
+ * @date: 2020-11-08 22:25:24
+ * @description: 类 ES6 类
+ */
 
-// 声明不赋值 就是 any 类型
-// 函数声明的方式 声明函数 和 标识.
-function sum(a: string, b: string): string {
-    return a + b;
+// as 断言成 XXX类型
+// ! 非空断言
+// ? 链式判断运算符  有值取值, 没有值 返回 undefined
+
+// ES6 类:=> 静态属性  私有的实例属性  共享的原型属性
+class Pointer {
+    x!: number; // 表示实例上有这个属性 非空断言
+    y!: number; // 非空断言
+
+    constructor(x: number, y?: number, ...args: number[]) { // 这些参数, 函数中的使用方式,这里都可以使用.
+        this.x = x;
+        this.y = y as number;
+    }
 }
 
-// 函数表达式方式声明函数 和 标识
-// 2) 如果使用的是表达式, 你给他定义了类型, 你可以把一个可以兼容的函数赋值给他
-type Sum = (a: string, b: string) => string
-let sum2: Sum = (a: string, b: string): string => {
-    return a + b
-};
+let pointer = new Pointer(1, 2, 3, 4, 5, 6);
+console.log(pointer.x);
 
-// 可选参数 ? 默认值 =
-// b? 表示 b 可以不传值,是个可选参数
-let sum3 = (a: string, b?: string) => {
+// --------------------------------------------------------------------
+// public 表示 父类本身 子类, 外部 都可以获取这个属性
+// protected 受保护的, 父类可以访问到, 子类可以访问到, 但是外部不能访问
+// private 只有自己能够访问到该属性
+// 如果 constructor 被标识成了 private 或者 protected, 则此类不能被new,
+// 被标识成了private, 则不能被子类继承
+class Animal {
+    public name!: string;
+    public age!: number;
 
-};
-let sum4 = (a: string, b: string = 'Gene') => {
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+}
 
-};
+class Cat extends Animal {
+    address = '';
 
-// 剩余参数
-let sum5 = (...args: number[]) => {
-};
-sum5(1, 2, 3, 4)
+    constructor(name: string, age: number, address: string) {
+        super(name, age);
+        this.address = address
+    }
+}
 
+let tom = new Cat('miao', 10, '北京');
 
 export {}
