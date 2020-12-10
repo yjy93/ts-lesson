@@ -38,6 +38,7 @@ enum USER_ROLE {// 异构枚举, 可以在枚举中放不同类型.
 // console.log(USER_ROLE.USER, USER_ROLE[0]);
 
 /** ----- 常量枚举 ------- */
+
 // 常量枚举 只是提供了一个类型
 const enum USER_ROLE2 { // 更语义化
     USER, // 默认下标是从 0 开始
@@ -70,11 +71,15 @@ function MyError(): never {
     throw new Error("err")
 }
 
-// Symbol 类型 BigInt 类型
+/** ===--== Symbol 类型 =========*/
+// Symbol 类型 表示独一无二的.
 let s1 = Symbol('123')
 
-
+// BigInt 类型. 大整型.
 // 对象类型  非原始数据类型
+
+/** ======= 对象类型 非原始类型 =======*/
+// 对象类型: 非原始类型 object
 const create = (obj: object) => {
 
 }
@@ -82,3 +87,5 @@ create({})
 create([])
 create(function () {
 })
+
+export {}

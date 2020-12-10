@@ -13,7 +13,7 @@ export default {
     sourcemap: true, //根据源码产生映射文件
   },
   plugins: [
-    nodeResolve({
+    nodeResolve({ // 第三方文件解析
       extensions: ['.js', '.ts']
     }),
     ts({
@@ -24,7 +24,6 @@ export default {
       contentBase: '',// 表示以当前文件为入口, 给个空,不给值会报错
       port: 8080, // 启动服务端口号
       open: true, // 默认打开浏览器
-
     })
   ]
 }
