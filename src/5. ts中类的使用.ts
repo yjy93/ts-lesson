@@ -38,6 +38,13 @@ class Animal {
         this.name = name;
         this.age = age;
     }
+
+    // 静态属性 和 静态方法 通过类来调用就是动态的
+    static type = "动物";
+
+    static getName() {
+        return "动物类"
+    }
 }
 
 class Cat extends Animal {
@@ -47,8 +54,24 @@ class Cat extends Animal {
         super(name, age);
         this.address = address
     }
+
+    // 静态方法
+    static getName() { // 子类重写 父类的方法
+        return "猫"
+    }
+
+    // 属性访问器. 来访问私有属性
+    private _eat: string = ''
+    get eat() { // 原型属性
+        return this._eat
+    }
+
+    // 属性访问器.
+    set eat(newVal) {
+        this._eat = newVal
+    }
 }
 
 let tom = new Cat('miao', 10, '北京');
-
+console.log(Cat.getName())
 export {}
